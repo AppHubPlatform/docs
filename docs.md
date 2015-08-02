@@ -22,8 +22,7 @@ This section describes the most basic AppHub configuration that will allow you t
 
 First, include our SDK libraries from your `AppDelegate.m` file:
 
-```
-#import <AppHub/AppHub.h>```
+    #import <AppHub/AppHub.h>
 
 Then, add this line to the beginning of your  `application:didFinishLaunchingWithOptions:` method in the `AppDelegate.m` file, replacing `Application Id` with the application id from the AppHub dashboard:
 
@@ -31,11 +30,10 @@ Then, add this line to the beginning of your  `application:didFinishLaunchingWit
 
 Finally, use `[[AppHub currentBuild].bundle]` to get the most up-to-date build and its associated `NSBundle`. Use this bundle to access the `main.jsbundle` file (or any other `.jsbundle` file in your build):
 
-```
-NSBundle *bundle = [AppHub currentBuild].bundle;
-NSURL *jsCodeLocation = [bundle URLForResource:@"main"
-                                 withExtension:@"jsbundle"];
-```
+    NSBundle *bundle = [AppHub currentBuild].bundle;
+    NSURL *jsCodeLocation = [bundle URLForResource:@"main"
+                                     withExtension:@"jsbundle"];
+
 
 As is standard for React Native apps, initialize an `RCTRootView` with this `jsCodeLocation` and present the view.
 
