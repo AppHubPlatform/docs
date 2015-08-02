@@ -1,5 +1,5 @@
 
-### Getting Started
+<h3 short-title='Getting started'>Getting started</h3>
 
 If you haven't installed the SDK yet, please [go to our quickstart guide](/quickstart) to get our SDK up and running in Xcode. Note that we support iOS 8.0 and higher, and React Native v0.7.0 and higher. If you're interested in more detailed information about our SDK, you can check out our <a href='/api/ios' target='_blank'>full API reference</a>.
 
@@ -7,7 +7,7 @@ Once you have installed the AppHub SDK, you can update your React Native JavaScr
 
 On AppHub, you create an App for each of your mobile applications. Each App has its own application id that you will use to configure the SDK. Each of your Apps will contain multiple Builds of your mobile application. You can configure and deploy Builds to your users from the AppHub dashboard.
 
-### Native and JavaScript components
+<h3 short-title='Components'>Native and JavaScript components</h3>
 
 All AppHub developers should understand the distinction between React Native "native components" and JavaScript components. Every React Native application contains both native code (Objective-C/Swift) and JavaScript. You will likely be making most of your changes to JavaScript code, and you will make occasional modifications to native code.
 
@@ -16,7 +16,7 @@ AppHub allows you to push JavaScript and image updates to your users. **If you m
 We highly recommend that you test your AppHub builds with their associated native code versions
 before deploying to your users. Check out the [testing section](#testing-builds) to learn more.
 
-### Basic SDK configuration
+<h3 short-title='Basic configuration'>Basic SDK configuration</h3>
 
 This section describes the most basic AppHub configuration that will allow you to push changes to JavaScript code and images.
 
@@ -40,7 +40,7 @@ As is standard for React Native apps, initialize an `RCTRootView` with this `jsC
 
 The AppHub SDK will automatically update the `currentBuild` with the appropriate build, as configured from the AppHub dashboard.
 
-### Listening for new builds
+<h3 short-title='Listening for new builds'>Listening for new builds</h3>
 
 If you want to perform an action when a new build becomes available to your application, such as displaying an alert to the user or force refreshing the app, you can listen for new build events.
 
@@ -56,15 +56,15 @@ From JavaScript you can register callback listeners like so:
         // Show a modal, alert the user, etc...
     });
 
-### Advanced SDK configuration
+<h3 short-title='Advanced configuration'>Advanced SDK configuration</h3>
 
 Section under construction.
 
-### Testing builds
+<h3 short-title='Testing builds'>Testing builds</h3>
 
 Section under construction.
 
-### (Advanced) Polling for new builds
+<h3 short-title='Polling for new builds'>(Advanced) Polling for new builds</h3>
 
 The AppHub SDK will poll our servers for new builds of your App. To avoid interfering with your mobile application's normal operation, the SDK will only poll during app inactivity.
 
