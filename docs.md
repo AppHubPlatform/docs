@@ -1,5 +1,5 @@
 
-<h2 short-title='Getting started'>Getting started</h2>
+<h3 short-title='Getting started'>Getting started</h3>
 
 If you haven't installed the SDK yet, please [go to our quickstart guide](/quickstart) to get our SDK up and running in Xcode. Note that we support iOS 8.0 and higher, and React Native v0.7.0 and higher. If you're interested in more detailed information about our SDK, you can check out our <a href='/api/ios' target='_blank'>full API reference</a>.
 

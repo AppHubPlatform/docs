@@ -1,3 +1,3 @@
-<h2 short-title='REST API'>REST API</h2>
+<h3 short-title='REST API'>REST API</h3>
 
 Section under constuction...

@@ -1,3 +1,3 @@
-<h2 short-title='Running your own AppHub server'>Running your own AppHub server.</h2>
+<h3 short-title='Running your own AppHub server'>Running your own AppHub server.</h3>
 
 Section under constuction...
