@@ -1,11 +1,13 @@
 
-<h3 short-title='Getting started'>Getting started</h3>
+<h2 short-title='Getting started'>Getting started</h2>
 
 If you haven't installed the SDK yet, please [go to our quickstart guide](/quickstart) to get our SDK up and running in Xcode. Note that we support iOS 8.0 and higher, and React Native v0.7.0 and higher. If you're interested in more detailed information about our SDK, you can check out our <a href='/api/ios' target='_blank'>full API reference</a>.
 
 Once you have installed the AppHub SDK, you can update your React Native JavaScript code and images by uploading new Xcode builds (IPAs) to the AppHub dashboard. Our SDK will  look for new builds and automatically update your users' apps.
 
 On AppHub, you create an App for each of your mobile applications. Each App has its own application id that you will use to configure the SDK. Each of your Apps will contain multiple Builds of your mobile application. You can configure and deploy Builds to your users from the AppHub dashboard.
+
+---
 
 <h3 short-title='Components'>Native and JavaScript components</h3>
 
@@ -15,6 +17,8 @@ AppHub allows you to push JavaScript and image updates to your users. **If you m
 
 We highly recommend that you test your AppHub builds with their associated native code versions
 before deploying to your users. Check out the [testing section](#testing-builds) to learn more.
+
+---
 
 <h3 short-title='Basic configuration'>Basic SDK configuration</h3>
 
@@ -40,6 +44,8 @@ As is standard for React Native apps, initialize an `RCTRootView` with this `jsC
 
 The AppHub SDK will automatically update the `currentBuild` with the appropriate build, as configured from the AppHub dashboard.
 
+---
+
 <h3 short-title='Listening for new builds'>Listening for new builds</h3>
 
 If you want to perform an action when a new build becomes available to your application, such as displaying an alert to the user or force refreshing the app, you can listen for new build events.
@@ -56,13 +62,21 @@ From JavaScript you can register callback listeners like so:
         // Show a modal, alert the user, etc...
     });
 
-<h3 short-title='Advanced configuration'>Advanced SDK configuration</h3>
-
-Section under construction.
+---
 
 <h3 short-title='Testing builds'>Testing builds</h3>
 
-Section under construction.
+We recommend that you test new builds on the version that is running in the App Store. To do this, checkout the version of your app that you submitted to the App Store and use the build selector to test builds:
+
+    [AppHub presentBuildSelectorWithBlock:
+               ^(AHBuild *build, NSError *error) {
+         NSURL *jsCodeLocation = [build.bundle URLForResource:@"main"
+                                                withExtension:@"jsbundle"];
+
+         // ... do something with the jsCodeLocation
+    }];
+
+---
 
 <h3 short-title='Polling for new builds'>(Advanced) Polling for new builds</h3>
 
