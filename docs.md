@@ -16,7 +16,7 @@ All AppHub developers should understand the distinction between React Native "na
 AppHub allows you to push JavaScript and image updates to your users. **If you make breaking changes to native code, you must update your iOS application via Apple**.
 
 We highly recommend that you test your AppHub builds with their associated native code versions
-before deploying to your users. Check out the [testing section](#testing-builds) to learn more.
+before deploying to your users. Check out the [testing section](#docs-testing-builds) to learn more.
 
 ---
 
