@@ -13,6 +13,6 @@ Section under construction.
 
 ---
 
-<h3 short-title='Minimal Implementation'>Minimal Implementation</h3>
+<h3 short-title='Minimal Implementation'>Minimal Server Implementation</h3>
 
 Section under construction.
