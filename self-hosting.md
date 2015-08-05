@@ -5,9 +5,13 @@ Some developers wish to configure their own backend to host and serve builds to 
 
 Here we provide a basic outline for the endpoints that must be implemented by a build-hosting server, as well as a minimal implementation in `io.js`.
 
+---
+
 <h3 short-title='Server Endpoints'>Server Endpoints</h3>
 
 Section under construction.
+
+---
 
 <h3 short-title='Minimal Implementation'>Minimal Implementation</h3>
 
