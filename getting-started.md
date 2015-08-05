@@ -20,7 +20,7 @@ before deploying to your users. Check out the [testing section](#docs-testing-bu
 
 ---
 
-<h3 short-title='Basic configuration'>Basic SDK configuration</h3>
+<h3 short-title='Basic Configuration'>Basic SDK Configuration</h3>
 
 This section describes the most basic AppHub configuration that will allow you to push changes to JavaScript code and images.
 
@@ -46,7 +46,7 @@ The AppHub SDK will automatically update the `currentBuild` with the appropriate
 
 ---
 
-<h3 short-title='Listening for new builds'>Listening for new builds</h3>
+<h3 short-title='Listening for New Builds'>Listening for New Builds</h3>
 
 If you want to perform an action when a new build becomes available to your application, such as displaying an alert to the user or force refreshing the app, you can listen for new build events.
 
@@ -64,7 +64,7 @@ From JavaScript you can register callback listeners like so:
 
 ---
 
-<h3 short-title='Testing builds'>Testing builds</h3>
+<h3 short-title='Testing Builds'>Testing Builds</h3>
 
 We recommend that you test new builds on the version that is running in the App Store. To do this, checkout the version of your app that you submitted to the App Store and use the build selector to test builds:
 
@@ -78,7 +78,7 @@ We recommend that you test new builds on the version that is running in the App 
 
 ---
 
-<h3 short-title='Polling for new builds'>(Advanced) Polling for new builds</h3>
+<h3 short-title='Polling for New Builds'>(Advanced) Polling for New Builds</h3>
 
 The AppHub SDK will poll our servers for new builds of your App. To avoid interfering with your mobile application's normal operation, the SDK will only poll during app inactivity.
 
