@@ -32,7 +32,7 @@ Then, add this line to the beginning of your  `application:didFinishLaunchingWit
 
     [AppHub setApplicationId:@"Application Id"];
 
-Finally, use `[[AppHub currentBuild].bundle]` to get the most up-to-date build and its associated `NSBundle`. Use this bundle to access the `main.jsbundle` file (or any other `.jsbundle` file in your build):
+Finally, use `[AppHub currentBuild].bundle` to get the most up-to-date build and its associated `NSBundle`. Use this bundle to access the `main.jsbundle` file (or any other `.jsbundle` file in your build):
 
     NSBundle *bundle = [AppHub currentBuild].bundle;
     NSURL *jsCodeLocation = [bundle URLForResource:@"main"
