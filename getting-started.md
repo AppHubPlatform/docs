@@ -28,15 +28,15 @@ First, include our SDK libraries from your `AppDelegate.m` file:
 
     #import <AppHub/AppHub.h>
 
-Then, add this line to the beginning of your  `application:didFinishLaunchingWithOptions:` method in the `AppDelegate.m` file, replacing `Application Id` with the application id from the AppHub dashboard:
+Then, add this line to the beginning of your  `application:didFinishLaunchingWithOptions:` method in the `AppDelegate.m` file, replacing `Application ID` with the application id from the AppHub dashboard:
 
-    [AppHub setApplicationId:@"Application Id"];
+    [AppHub setApplicationID:@"Application ID"];
 
-Finally, use `[AppHub currentBuild].bundle` to get the most up-to-date build and its associated `NSBundle`. Use this bundle to access the `main.jsbundle` file (or any other `.jsbundle` file in your build):
+Finally, use `[AppHub buildManager].currentBuild` to get the most up-to-date build. Then use `build.bundle` (type `NSBundle` to access the `main.jsbundle` file (or any other `.jsbundle` file in your build):
 
-    NSBundle *bundle = [AppHub currentBuild].bundle;
-    NSURL *jsCodeLocation = [bundle URLForResource:@"main"
-                                     withExtension:@"jsbundle"];
+    AHBuild *build = [AppHub buildManager].currentBuild;
+    NSURL *jsCodeLocation = [build.bundle URLForResource:@"main"
+                                           withExtension:@"jsbundle"];
 
 
 As is standard for React Native apps, initialize an `RCTRootView` with this `jsCodeLocation` and present the view.
@@ -50,17 +50,17 @@ The AppHub SDK will automatically update the `currentBuild` with the appropriate
 
 If you want to perform an action when a new build becomes available to your application, such as displaying an alert to the user or force refreshing the app, you can listen for new build events.
 
-From Objective-C you can set an `AppHubDelegate` which implements the `onNewBuild` method:
+From Objective-C you can list for notifications with the string `AHBuildManagerDidMakeBuildAvailableNotification`.
 
-    -(void) onNewBuild:(AHBuild *)build;
+From JavaScript you can register a listener for this event like so:
 
-From JavaScript you can register callback listeners like so:
-
-    let AppHub = require('react-native').NativeModules.AppHub;
-
-    AppHub.onNewBuild(build => {
+    var { NativeAppEventEmitter } = React;
+    var subscription = NativeAppEventEmitter.addListener(
+      'AppHub.newBuild',
+      (build) => {
         // Show a modal, alert the user, etc...
-    });
+      }
+    );
 
 ---
 
@@ -68,12 +68,13 @@ From JavaScript you can register callback listeners like so:
 
 We recommend that you test new builds on the version that is running in the App Store. To do this, checkout the version of your app that you submitted to the App Store and use the build selector to test builds:
 
-    [AppHub presentBuildSelectorWithBlock:
-               ^(AHBuild *build, NSError *error) {
-         NSURL *jsCodeLocation = [build.bundle URLForResource:@"main"
-                                                withExtension:@"jsbundle"];
+    // Create a root view controller and present it...
 
-         // ... do something with the jsCodeLocation
+    [AppHub presentSelectorOnViewController:vc
+                           withBuildHandler:^(AHBuild *result, NSError *error) {
+      NSURL *jsCodeLocation = [result.bundle URLForResource:@"main"
+                                              withExtension:@"jsbundle"];
+      // Now initialize an RCTRootView with this bundle.
     }];
 
 ---
@@ -85,16 +86,10 @@ The AppHub SDK will poll our servers for new builds of your App. To avoid interf
 
 If you wish to manually control the frequency and timing of the polling, you can disable automatic polling:
 
-    [AppHub setAutomaticPolling:NO];
+    [AppHub buildManager].automaticPollingEnabled = NO;
 
 To poll for new builds, call this method:
 
-    [AppHub fetchBuildInBackground];
-
-You can also call this method from your React Native JavaScript code:
-
-    let AppHub = require('react-native').NativeModules.AppHub;
-
-    AppHub.fetchBuildInBackground();
+    [[AppHub buildManager] fetchBuildWithCompletionHandler:nil];
 
 Check out the <a href='/api/ios' target='_blank'>full API reference</a> for more ways to poll for builds, including methods for callbacks and synchronous fetching of builds.
