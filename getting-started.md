@@ -54,11 +54,12 @@ From Objective-C you can list for notifications with the string `AHBuildManagerD
 
 From JavaScript you can register a listener for this event like so:
 
-    var { NativeAppEventEmitter } = React;
+    var { NativeAppEventEmitter, AlertIOS } = React;
     var subscription = NativeAppEventEmitter.addListener(
       'AppHub.newBuild',
       (build) => {
         // Show a modal, alert the user, etc...
+        AlertIOS.alert('New version available!', build.buildDescription);
       }
     );
 
