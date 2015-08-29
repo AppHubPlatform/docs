@@ -1,7 +1,7 @@
 
 <h2>Getting Started</h2>
 
-If you haven't installed the SDK yet, please [go to our quickstart guide](/quickstart) to get our SDK up and running in Xcode. Note that we support iOS 8.0 and higher, and React Native v0.7.0 and higher. If you're interested in more detailed information about our SDK, you can check out our <a href='/api/ios' target='_blank'>full API reference</a>.
+If you haven't installed the SDK yet, please [go to our quickstart guide](/quickstart) to get our SDK up and running in Xcode. Note that we support iOS 7.0+, and React Native v0.7.0 and higher. If you're interested in more detailed information about our SDK, you can check out our <a href='/api/ios' target='_blank'>full API reference</a>.
 
 Once you have installed the AppHub SDK, you can update your React Native JavaScript code and images by uploading new Xcode builds (IPAs) to the AppHub dashboard. Our SDK will  look for new builds and automatically update your users' apps.
 
@@ -15,7 +15,7 @@ All AppHub developers should understand the distinction between React Native "na
 
 AppHub allows you to push JavaScript and image updates to your users. **If you make breaking changes to native code, you must update your iOS application via Apple**.
 
-We highly recommend that you test your AppHub builds with their associated native code versions
+We recommend that you test your AppHub builds with their associated native code versions
 before deploying to your users. Check out the [testing section](#docs-testing-builds) to learn more.
 
 ---
@@ -32,7 +32,7 @@ Then, add this line to the beginning of your  `application:didFinishLaunchingWit
 
     [AppHub setApplicationID:@"Application ID"];
 
-Finally, use `[AppHub buildManager].currentBuild` to get the most up-to-date build. Then use `build.bundle` (type `NSBundle` to access the `main.jsbundle` file (or any other `.jsbundle` file in your build):
+Finally, use `[AppHub buildManager].currentBuild` to retrieve the cached AppHub build. Then use `build.bundle` (type `NSBundle` to access the `main.jsbundle` file (or any other `.jsbundle` file in your build):
 
     AHBuild *build = [AppHub buildManager].currentBuild;
     NSURL *jsCodeLocation = [build.bundle URLForResource:@"main"
@@ -41,8 +41,17 @@ Finally, use `[AppHub buildManager].currentBuild` to get the most up-to-date bui
 
 As is standard for React Native apps, initialize an `RCTRootView` with this `jsCodeLocation` and present the view.
 
+---
 
-The AppHub SDK will automatically update the `currentBuild` with the appropriate build, as configured from the AppHub dashboard.
+<h3 short-title='Network Usage'>Network Usage</h3>
+
+The AppHub SDK polls for new builds of your app and downloads new builds in a background thread.
+
+By default, the AppHub SDK will only poll for new builds when the device is connected to WiFi.
+
+You can permit the SDK to download new builds on a cellular connection (WWAN) like so:
+
+    [AppHub buildManager].cellularDownloadsEnabled = YES;
 
 ---
 
@@ -80,10 +89,9 @@ We recommend that you test new builds on the version that is running in the App 
 
 ---
 
-<h3 short-title='Polling for New Builds'>(Advanced) Polling for New Builds</h3>
+<h3 short-title='Polling for New Builds'>Polling for New Builds (Advanced)</h3>
 
-The AppHub SDK will poll our servers for new builds of your App. To avoid interfering with your mobile application's normal operation, the SDK will only poll during app inactivity.
-
+The AppHub SDK will poll our servers for new builds of your App.
 
 If you wish to manually control the frequency and timing of the polling, you can disable automatic polling:
 
@@ -93,4 +101,13 @@ To poll for new builds, call this method:
 
     [[AppHub buildManager] fetchBuildWithCompletionHandler:nil];
 
-Check out the <a href='/api/ios' target='_blank'>full API reference</a> for more ways to poll for builds, including methods for callbacks and synchronous fetching of builds.
+This method can also take a completion block as an argument:
+
+    [[AppHub buildManager] fetchBuildWithCompletionHandler:
+        ^(AHBuild *result, NSError *error) {
+      // If the `result` AHBuild is not nil, then it is guaranteed
+      // to be the most up-to-date build of the app.
+    }];
+
+Some developers choose to use this method at App startup to ensure that all devices have the most
+up-to-date build.
