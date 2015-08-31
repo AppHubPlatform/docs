@@ -1,15 +1,29 @@
 
 <h2>REST API</h2>
 
-We provide a POST endpoint for uploading IPAs to the AppHub dashboard.
+We provide an endpoint for uploading builds to the AppHub dashboard.
 
 It is also possible to automatically upload builds from continuous integration services. We provide instructions here for two popular services: [Travis CI](https://travis-ci.org/) and [CircleCI](https://circleci.com/).
 
 ---
 
-<h3 short-title='POST Endpoint'>POST Endpoint</h3>
+<h3 short-title='PUT Endpoint'>PUT Endpoint</h3>
 
-Section under construction.
+The easiest way to upload builds is to use our script [here](https://apphub.io/script/build). This
+script takes two arguments: `-i` the App ID of your project, and `-s` the App Secret of your project.
+The script will build your app and upload the built IPA to the AppHub server.
+
+    curl https://apphub.io/script/build | sh -s -- -i <App ID> -s <App Secret>
+
+You can also use the AppHub API directly to upload IPA files. Here is an example which uses cURL:
+
+    curl -X PUT \
+         -H "X-AppHub-Application-ID: <App ID>" \
+         -H "X-AppHub-Application-Secret: <App Secret>" \
+         -L https://api.apphub.io/v1/upload \
+         --upload-file <IPA Location>
+
+Replace `<App ID>`, `<App Secret>`, and `<IPA Location>` with the appropriate values.
 
 ---
 
