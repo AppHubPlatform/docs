@@ -13,7 +13,7 @@ The easiest way to upload builds is to use our script [here](https://apphub.io/b
 script takes two arguments: `-i` the App ID of your project, and `-s` the App Secret of your project.
 The script will build your app and upload the built IPA to the AppHub server.
 
-    curl https://apphub.io/script/build | sh -s -- -i <App ID> -s <App Secret>
+    curl https://apphub.io/build | sh -s -- -i <App ID> -s <App Secret>
 
 You can also use the AppHub API directly to upload IPA files. Here is an example which uses cURL:
 
