@@ -9,7 +9,7 @@ It is also possible to automatically upload builds from continuous integration s
 
 <h3 short-title='PUT Endpoint'>PUT Endpoint</h3>
 
-The easiest way to upload builds is to use our script [here](https://apphub.io/script/build). This
+The easiest way to upload builds is to use our script [here](https://apphub.io/build). This
 script takes two arguments: `-i` the App ID of your project, and `-s` the App Secret of your project.
 The script will build your app and upload the built IPA to the AppHub server.
 
