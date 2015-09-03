@@ -1,7 +1,7 @@
 
 <h2>Downloads & Changelogs</h2>
 
-This section contains a list of the lastest versions of each SDKs, as well as a changelog for each
+This section contains the lastest versions of each SDKs, as well as a changelog for each
 SDK.
 
 ---
