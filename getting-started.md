@@ -32,7 +32,7 @@ Then, add this line to the beginning of your  `application:didFinishLaunchingWit
 
     [AppHub setApplicationID:@"Application ID"];
 
-Finally, use `[AppHub buildManager].currentBuild` to retrieve the cached AppHub build. Then use `build.bundle` (type `NSBundle` to access the `main.jsbundle` file (or any other `.jsbundle` file in your build):
+Finally, use `[AppHub buildManager].currentBuild` to retrieve the cached AppHub build. Then use `build.bundle` to access the `main.jsbundle` file:
 
     AHBuild *build = [AppHub buildManager].currentBuild;
     NSURL *jsCodeLocation = [build.bundle URLForResource:@"main"
