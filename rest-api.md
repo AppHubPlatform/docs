@@ -9,13 +9,7 @@ It is also possible to automatically upload builds from continuous integration s
 
 <h3 short-title='PUT Endpoint'>PUT Endpoint</h3>
 
-The easiest way to upload builds is to use our script [here](https://apphub.io/build). This
-script takes two arguments: `-i` the App ID of your project, and `-s` the App Secret of your project.
-The script will build your app and upload the built IPA to the AppHub server.
-
-    curl https://apphub.io/build | sh -s -- -i <App ID> -s <App Secret>
-
-You can also use the AppHub API directly to upload IPA files. Here is an example which uses cURL:
+You can use the AppHub API to upload IPA files. Here is an example which uses cURL:
 
     curl -X PUT \
          -H "X-AppHub-Application-ID: <App ID>" \
