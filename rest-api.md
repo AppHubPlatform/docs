@@ -7,7 +7,7 @@ It is also possible to automatically upload builds from continuous integration s
 
 ---
 
-<h3 short-title='PUT Endpoint'>PUT Endpoint</h3>
+<h3 short-title='Uploading IPAs'>Uploading IPAs</h3>
 
 You can use the AppHub API to upload IPA files. Here is an example which uses cURL:
 
