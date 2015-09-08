@@ -38,8 +38,12 @@ Finally, use `[AppHub buildManager].currentBuild` to retrieve the cached AppHub 
     NSURL *jsCodeLocation = [build.bundle URLForResource:@"main"
                                            withExtension:@"jsbundle"];
 
-
 As is standard for React Native apps, initialize an `RCTRootView` with this `jsCodeLocation` and present the view.
+
+When you deploy new builds of your app with AppHub, the SDK downloads the new build
+in the background and then loads from the cache at the next call to `[AppHub buildManager].currentBuild`.
+
+If no AppHub cached builds are available, the SDK will default to using the build that was submitted to the App Store.
 
 ---
 
