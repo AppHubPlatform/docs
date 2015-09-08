@@ -26,7 +26,7 @@ Builds represent versions of your app. When you upload a new build, the default 
 
 ---
 
-<h3 short-title='JS/Native Versioning'>JavaScript and Native Versioning</h3>
+<h3 short-title='JS and Native Versioning'>JavaScript and Native Versioning</h3>
 
 It is important for AppHub developers to understand the relationship between iOS app versions and build versions. When you make changes to native code, and change the iOS version of your app, you risk making your app incompatible with javascript code made for earlier native versions. When you upload an IPA to AppHub, we determine the native version of your app associated with the javascript you intend to update. By default, AppHub will then only distribute your javascript update to devices running that native version of your app.
 
