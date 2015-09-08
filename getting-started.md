@@ -74,6 +74,19 @@ From JavaScript you can register a listener for this event like so:
 
 ---
 
+<h3 short-title='Debug Builds'>Debug Builds</h3>
+
+Many developers use AppHub with testing services like TestFlight and HockeyApp as it is desirable to push AppHub updates to your beta users before pushing them to production.
+
+To enable "debug" builds, enable this property in your Objective-C code and distribute
+to beta users:
+
+    [AppHub buildManager].debugBuildsEnabled = YES;
+
+When deploying builds from the AppHub dashboard, configure your build to deploy to the "debug" target.
+
+---
+
 <h3 short-title='Testing Builds'>Testing Builds</h3>
 
 We recommend that you test new builds on the version that is running in the App Store. To do this, checkout the version of your app that you submitted to the App Store and use the build selector to test builds:
