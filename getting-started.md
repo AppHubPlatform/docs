@@ -63,8 +63,6 @@ You can permit the SDK to download new builds on a cellular connection (WWAN) li
 
 If you want to perform an action when a new build becomes available to your application, such as displaying an alert to the user or force refreshing the app, you can listen for new build events.
 
-From Objective-C you can list for notifications with the string `AHBuildManagerDidMakeBuildAvailableNotification`.
-
 From JavaScript you can register a listener for this event like so:
 
     var { NativeAppEventEmitter, AlertIOS } = React;
@@ -76,6 +74,16 @@ From JavaScript you can register a listener for this event like so:
       }
     );
 
+From Objective-C you can observe notifications with the name `AHBuildManagerDidMakeBuildAvailableNotification`:
+
+    [[NSNotificationCenter defaultCenter]
+      addObserverForName:AHBuildManagerDidMakeBuildAvailableNotification
+                  object:nil
+                   queue:nil
+              usingBlock:^(NSNotification *notification) {
+          AHBuild *build = notification.userInfo[AHBuildManagerBuildKey];
+          NSLog(@"New build available! %@", build.buildDescription);
+      }];
 ---
 
 <h3 short-title='Debug Builds'>Debug Builds</h3>
