@@ -45,6 +45,9 @@ in the background and then loads from the cache at the next call to `[AppHub bui
 
 If no AppHub cached builds are available, the SDK will default to using the build that was submitted to the App Store.
 
+Take a look at the AppHub starter project [AppDelegate.m](https://github.com/AppHubPlatform/AppHubStarterProject/blob/master/iOS/AppHubStarterProject/AppDelegate.m)
+for a full AppHub integration which allows your users to refresh the app when you push an update.
+
 ---
 
 <h3 short-title='Network Usage'>Network Usage</h3>
