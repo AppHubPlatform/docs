@@ -8,9 +8,12 @@ SDK.
 
 <h3 short-title='Latest SDKs'>Latest SDKs</h3>
 
-- iOS: [SDK](https://www.dropbox.com/s/uhhot8sj6dkt9gq/AppHub.zip?dl=1) (v0.0.7)
+- iOS: [SDK](https://www.dropbox.com/s/bz0y7z2r3b4fmxz/AppHub.zip?dl=1) (v0.0.8)
 
 <h3 short-title='iOS Changelog'>iOS Changelog</h3>
+
+- v0.0.8 - September 18, 2015
+  - Enabled bitcode for building on iOS 9.
 
 - v0.0.7 - September 4, 2015
   - Fixed a bug where a notification would not be emitted when an app returned to the default App Store build.
